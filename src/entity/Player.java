@@ -38,7 +38,6 @@ public class Player extends Entity{
            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
 
-
        }
        catch(IOException e){
            e.printStackTrace();
@@ -49,21 +48,29 @@ public class Player extends Entity{
         if(keyH.upPressed==true){
             direction = "up";
             y -= speed;
+            moveSprite();
         }
         else if(keyH.downPressed==true){
             direction = "down";
             y += speed;
+            moveSprite();
         }
         else if(keyH.leftPressed==true){
             direction = "left";
             x -= speed;
+            moveSprite();
 
         }
         else if(keyH.rightPressed==true){
             direction = "right";
             x += speed;
+            moveSprite();
         }
 
+
+    }
+
+    private void moveSprite() {
         spriteCounter++;
         if(spriteCounter>10){
             if( spriteNum== 1){
@@ -75,9 +82,9 @@ public class Player extends Entity{
             spriteCounter = 0;
         }
     }
+
     public void draw(Graphics2D g2){
-/*        g2.setColor(Color.white);
-        g2.fillRect(x,y, gp.tileSize,gp.tileSize);*/
+
         BufferedImage image = null;
         switch(direction){
             case "up":
